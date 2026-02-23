@@ -1,0 +1,12 @@
+<!-- Inheriting the base layout -->
+{% extends 'base.html' %}
+<!-- Macro for displaying form -->
+{% from 'bootstrap5/form.html' import render_form %}
+<!-- Title of Page -->
+{% block title %}Add New Book{% endblock %}
+
+<!-- Content -->
+{% block content %}
+{{render_form(form)}}
+{% endblock %}
+

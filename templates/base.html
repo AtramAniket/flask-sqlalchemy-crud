@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% block styles %}
+		<!-- Bootstrap CSS -->
+		{{ bootstrap.load_css() }} 
+	{% endblock %}
+	<title>
+		{% block title %}
+			<!-- Title of the page -->
+		{% endblock %}
+	</title>
+</head>
+<body>
+	{% block content %}
+		<!-- Content of web page -->
+	{% endblock %}
+
+	{%block scripts%}
+		 <!-- Bootstrap Popper  -->
+		 {{ bootstrap.load_js() }}
+	{% endblock %}
+</body>
+</html>

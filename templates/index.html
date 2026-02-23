@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}My Book Shelf{% endblock %}
+
+{% block content %}
+	<div class="container-fluid">
+		<h1>My Library</h1>
+		<br/>
+		{% if collection %}
+			<ul>
+				{%for book in collection %}
+					<li>{{book.title}}/{{book.author}}/{{book.rating}}</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<p>No book in library</p>
+		{% endif %}
+		<br/>
+		<a class="btn btn-primary btn-sm py-2" href="{{url_for('add_new_book')}}">Add New Book</a>
+	</div>
+{% endblock %}

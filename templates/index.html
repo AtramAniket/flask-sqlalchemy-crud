@@ -5,17 +5,48 @@
 {% block content %}
 	<div class="container-fluid">
 		<h1>My Library</h1>
+		{% if collection %}
+			<table class="table table striped">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Title</th>
+						<th>Author</th>
+						<th>Rating</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{%for book in collection %}
+						<tr>
+							<td>{{ book.id }}</td>
+							<td>{{ book.title }}</td>
+							<td>{{ book.author }}</td>
+							<td>{{ book.rating }}</td>
+							<td>
+								<a href="{{url_for('edit', book_id = book.id)}}" class="btn btn-primary btn-sm">Edit</a> 
+								<a href="{{url_for('delete', book_id = book.id)}}" class="btn btn-sm btn-danger">Delete</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% else %}
+			<p>No book in library</p>
+		{% endif %}
+		
+		<!-- <h1>My Library</h1>
 		<br/>
 		{% if collection %}
 			<ul>
 				{%for book in collection %}
-					<li>{{book.title}}/{{book.author}}/{{book.rating}}</li>
+					<li>{{book.title}} - {{book.author}} - {{book.rating}}/10</li>
 				{% endfor %}
 			</ul>
 		{% else %}
 			<p>No book in library</p>
 		{% endif %}
-		<br/>
+		<br/> -->
 		<a class="btn btn-primary btn-sm py-2" href="{{url_for('add_new_book')}}">Add New Book</a>
 	</div>
 {% endblock %}
